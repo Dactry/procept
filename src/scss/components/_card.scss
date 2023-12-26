@@ -1,0 +1,105 @@
+.card {
+  $self: &;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow);
+  color: inherit;
+  height: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  text-decoration: none;
+  transition: background var(--transition);
+  clip-path: polygon(0% 0%, calc(100% - 3em) 0%, 100% 1.5em, 100% 100%, 0% 100%);
+  &.has-link:hover {
+    img {
+      scale: 1.05;
+    }
+  }
+  img {
+    @include will-change(scale);
+    transition: scale var(--transition);
+  }
+  &__content {
+    @include vstack(initial);
+    height: 100%;
+    padding: var(--spacer-element-lg);
+    gap: var(--spacer-element);
+    &-header {
+      display: flex;
+      gap: var(--spacer-element);
+      justify-content: space-between;
+    }
+  }
+
+  &__icon {
+    flex: 1;
+    max-width: 120px;
+  }
+  &__text {
+    font-size: var(--fs-xs);
+    flex: 1;
+    @include vstack;
+    gap: var(--spacer-element);
+    > hr:last-child {
+      margin-top: auto;
+    }
+    a {
+      position: relative;
+      z-index: 1;
+    }
+
+    &--hover {
+      @include bp(lg) {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: calc(100% - 4px);
+        height: calc(100% - 4px);
+        clip-path: polygon(0% 0%, calc(100% - 3em - 10px) 0%, 100% calc(1.5em + 6px), 100% 100%, 0% 100%);
+        z-index: 1;
+        overflow: auto;
+        padding: var(--spacer-element);
+        background: var(--color-white);
+        opacity: 0;
+        transition: opacity var(--transition);
+      }
+      gap: var(--spacer-element);
+      .card:hover & {
+        opacity: 1;
+      }
+    }
+  }
+  &__description {
+    min-height: 10em;
+  }
+  &__title {
+    @at-root #{selector-append(a, &)} {
+      text-decoration: none;
+      &:not(:hover) {
+        color: inherit;
+      }
+      &::after {
+        content: "";
+        @include stretch;
+      }
+    }
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-surface);
+    border: 3px solid var(--color-white);
+    border-top-width: 2em;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-surface);
+  }
+}

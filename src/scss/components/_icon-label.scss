@@ -1,0 +1,13 @@
+.icon-label {
+  display: inline-flex;
+  gap: var(--spacer-element-sm);
+  align-items: center;
+  @include underline--reverse;
+  &-suffix {
+    line-height: 2;
+    font-size: 0.4em;
+  }
+  &:not(:hover) {
+    color: currentColor;
+  }
+}

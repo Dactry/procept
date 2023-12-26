@@ -1,0 +1,12 @@
+body#tinymce {
+  margin: var(--spacer-element);
+  background: #eee;
+  //fix button styles in admin panel when button is focused
+  .button[data-mce-selected] {
+    margin: 0;
+    padding: var(--button-y-padding) var(--button-x-padding);
+    box-shadow: none;
+    color: var(--color-text);
+    border-color: transparent;
+  }
+}

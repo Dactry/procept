@@ -1,0 +1,141 @@
+:root {
+  /*
+  Colors
+  */
+  --color-primary: #{$color-primary};
+  --color-primary-light: #{lighten($color-primary, 8%)};
+  --color-primary-dark: #{darken($color-primary, 5%)};
+  --color-primary-muted: #{rgba($color-primary, 0.75)};
+  --color-surface: #{$color-surface};
+  --color-light: #{$color-gray-blue};
+
+  --color-error: #f44336;
+  --color-success: #0f834d;
+
+  --color-dark: #{$color-dark};
+  --color-white: #ffffff;
+  --color-white-muted: rgba(255, 255, 255, 0.5);
+  --color-white-muted-alt: rgba(255, 255, 255, 0.1);
+
+  --color-curtain: #{rgba($color-dark, 0.75)};
+  --color-curtain-light: #{rgba($color-dark, 0.3)};
+
+  --color-text: #{$color-dark};
+  --color-text-muted: #{rgba($color-dark, 0.6)};
+  --color-text-muted-alt: #{rgba($color-dark, 0.1)};
+  --color-invert: var(--color-white);
+
+  --color-link: var(--color-primary);
+  --color-link-hover: var(--color-primary-dark);
+
+  --color-border: #{rgba($color-dark, 0.2)};
+  --color-background-body: var(--color-white);
+
+  --input-border-color: var(--color-border);
+  --input-border-color-hover: #{rgba($color-dark, 0.4)};
+  --input-border-color-focus: var(--color-primary);
+  --input-background-color: var(--color-white);
+
+  --button-text-color: var(--color-white);
+  --button-text-color-hover: var(--button-text-color);
+  --button-background-color: var(--color-primary);
+  --button-background-color-hover: var(--color-primary-light);
+  --button-border-color: transparent;
+  --button-border-color-hover: transparent;
+
+  --icon-color: currentColor;
+
+  /*
+  Typography
+  */
+  --ff-primary: "Arial", sans-serif;
+  --line-height: 1.65;
+
+  //Generate --h variables from h6 to h2
+  $min: 1rem;
+  $max: 1.25rem;
+  $min-scale: 1.125;
+  $max-scale: 1.25;
+  $i: 6;
+  @while $i >= 2 {
+    --h#{$i}: #{clamp-smart($min, $max)};
+    $min: $min * $min-scale;
+    $max: $max * $max-scale;
+    $i: $i - 1;
+  }
+  --h1: #{clamp-smart(2rem, 5rem)};
+
+  --fs-xxs: 0.75em;
+  --fs-xs: 0.8em;
+  --fs-sm: 0.875em;
+  --fs-lg: var(--h5);
+  --fs-xl: var(--h4);
+  --fs-xxl: var(--h3);
+
+  /*
+  Structure Variables
+  */
+
+  --header-height: #{clamp-smart(3.5rem, 5.4rem, 768px, 1900px)};
+
+  --spacer-section: #{clamp-smart(2rem, 6rem)};
+
+  --spacer-element: #{clamp-smart(1rem, 1.25rem)};
+  --spacer-element-sm: calc(var(--spacer-element) / 2);
+  --spacer-element-md: #{clamp-smart(1rem, 1.75rem)};
+  --spacer-element-lg: #{clamp-smart(1rem, 2.25rem)};
+  --spacer-element-x2: calc(var(--spacer-element) * 2);
+
+  //generate spacers from absctract/_variables.scss $spacers
+  @each $name, $value in $spacers {
+    --spacer-#{$name}: #{$value};
+  }
+
+  --container-width: #{$container-width};
+  --container-spacer: #{clamp-smart(1.25rem, 2.5rem)};
+
+  --input-height: 3.4em;
+  --input-y-padding: 0.75em;
+  --input-x-padding: 1.4em;
+  --input-fs: var(--fs-sm);
+  --input-choice-spacer: 0.3rem;
+
+  --button-height: var(--input-height);
+  --button-y-padding: 0.25em;
+  --button-x-padding: var(--input-x-padding);
+  --button-fs: var(--input-fs);
+
+  --border-width: 1px;
+
+  --shadow: 0 0 0.75rem 0 rgba(0, 0, 0, 0.05);
+
+  --table-x-padding: 0.5em;
+  --table-y-padding: 0.7em;
+
+  --icon-size: 1em;
+  --icon-bg: var(--color-surface);
+
+
+  /*
+  Transitions
+  */
+  --transition-duration: 300ms;
+  --transition-timing-function: ease;
+  --transition: var(--transition-duration) var(--transition-timing-function);
+
+  --animate-transition: 500ms ease;
+  --animate-distance: 1.5rem;
+
+  --tangent-height: #{clamp-smart(14px, 30px)};
+  --tangent-width: calc(var(--tangent-height) * 1.75);
+
+  --text-indent : 2em;
+
+  --decor-label-height : 3em;
+
+  --block-radius: 2em;
+
+  --panel-width: calc(var(--container-width) * 0.4);
+  --header-fullheight: calc(var(--header-height) + var(--tangent-height));
+
+}

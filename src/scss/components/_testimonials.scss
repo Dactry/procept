@@ -1,0 +1,25 @@
+.testimonials {
+    --image-width: 6.5em;
+    @include bp(md, max) {
+        text-align: center;
+    }
+    &__img {
+        width: var(--image-width);
+        height: var(--image-width);
+        border-radius: 50%;
+        overflow: hidden;
+        background: var(--color-white);
+        display: flex;
+        margin: auto;
+    }
+    &__pagination {
+        @include bp(md) {
+            position: absolute;
+            top: var(--image-width);
+            z-index: 1;
+        }
+        margin-top: var(--spacer-element);
+        width: var(--image-width);
+        justify-content: space-between;
+    }
+}

@@ -1,0 +1,12 @@
+.breadcrumbs {
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    font-size: var(--fs-xxs);
+    margin: var(--spacer-element)0;
+    > *:not(:last-child) {
+        margin-right: 1em;
+    }
+    a:not(:hover) {
+        color: inherit;
+    }
+}

@@ -1,0 +1,46 @@
+.vacancy-card {
+    $self: &;
+    &s {
+        display: grid;
+        gap: var(--spacer-section) 3em;
+        @include bp(md) {
+            grid-template-columns: 1fr 1fr;
+        }
+        a {
+            text-decoration: none;
+        }
+        li {
+            padding: 0 var(--spacer-element-sm) 0 1.3em;
+            &::after {
+                top: 0 !important;
+            }
+        }
+    }
+    &__body {
+        display: inline;
+        flex: 1;
+    }
+    &__title {
+        vertical-align: text-bottom;
+        display: inline;
+    }
+
+    &__content {
+        line-height: 1;
+        margin-bottom: .875em;
+    }
+
+    &__tags {
+        font-size: 0.875rem;
+    }
+
+    &__subtitle {
+        vertical-align: super;
+        text-transform: uppercase;
+        font-size: clamp-smart(.7rem, .875rem);
+        color: var(--color-text-muted);
+    }
+    @at-root #{selector-append(a, &)} {
+        font-size: 1em;
+    }
+}

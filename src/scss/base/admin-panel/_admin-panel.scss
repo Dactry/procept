@@ -1,0 +1,27 @@
+@import "./../../abstracts/functions";
+@import "./../../abstracts/variables";
+@import "./../../base/root";
+
+.acf-editor-wrap iframe {
+  min-height: 0;
+}
+
+#postdivrich:target {
+  outline: 2px dashed;
+  outline-offset: 2px;
+}
+
+table.media .column-title .media-icon img {
+  max-height: 60px;
+}
+
+.color-preview {
+  --color: transparent;
+  width: 1rem;
+  height: 1rem;
+  display: inline-block;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  background-color: var(--color);
+  vertical-align: middle;
+}

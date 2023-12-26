@@ -1,0 +1,94 @@
+.list-links {
+    $self: &;
+    @include reset-list;
+    font-size: var(--h4);
+    &:not(.row-menu) {
+        > li:first-child {
+            --padding-top: 0.5rem;
+        }
+    }
+
+    > li {
+        --padding-top: var(--spacer-element-lg);
+        --decor-line-height: 0.875rem;
+        --accent-color: currentColor;
+        --transform-origin: bottom right;
+        --decor-line-width: calc(100% - var(--decor-line-height) * 1.7);
+        @extend .decor-line;
+        counter-increment: custom-counter;
+        position: relative;
+        color: currentColor;
+        gap: var(--spacer-element);
+        padding: var(--padding-top) 0.2em 0.7em 1.3em;
+        line-height: 1.25;
+        margin: 0;
+        &:has(a):hover,
+        &:has(button):hover,
+        &.current-cat,
+        &:has(.active) {
+            --accent-color: var(--color-primary);
+        }
+        &::before {
+            left: initial;
+            right: 0;
+            color: var(--accent-color);
+        }
+    }
+    @at-root #{selector-append(ol, &)} {
+        > li {
+            &::after {
+                position: absolute;
+                top: var(--padding-top);
+                left: 0;
+                font-size: 0.5em;
+                order: -1;
+                line-height: 1.7;
+                color: var(--accent-color);
+                content: counter(custom-counter, decimal-leading-zero);
+                transition: color var(--transition);
+                z-index: -1;
+            }
+        }
+    }
+    > li > a {
+        position: initial;
+        text-decoration: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        color: var(--accent-color) !important;
+        gap: var(--spacer-element-sm);
+
+        &::before {
+            content: "";
+            @include stretch;
+        }
+        &:hover {
+            &::after {
+                rotate: 45deg;
+            }
+        }
+        &::after {
+            --icon-size: 0.5em;
+            @include mask-icon(
+                url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.58317 1.58325H14.4165M14.4165 1.58325V14.4166M14.4165 1.58325L1.58317 14.4166' stroke='white' stroke-width='2' stroke-linecap='square'/%3E%3C/svg%3E%0A")
+            );
+            display: block;
+            flex: 0 0 auto;
+            translate: 0 -0.1em;
+            margin-left: var(--spacer-element);
+            transition: rotate var(--transition);
+            @include will-change(rotate);
+        }
+    }
+    &__title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    &__count {
+        align-self: flex-start;
+        font-size: 0.6em;
+        flex: 1;
+        opacity: 0.7;
+    }
+}

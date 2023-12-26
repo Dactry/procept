@@ -1,0 +1,18 @@
+@mixin input {
+  padding: 0 var(--input-x-padding);
+  height: var(--input-height);
+  font-size: var(--input-fs);
+  background: var(--input-background-color);
+  border: var(--border-width) solid var(--input-border-color);
+  color: var(--color-dark);
+  border-radius: calc(var(--input-height) / 2);
+  transition: border-color var(--transition);
+}
+
+@mixin input--hover {
+  --input-border-color: var(--input-border-color-hover);
+}
+
+@mixin input--focus {
+  --input-border-color: var(--input-border-color-focus);
+}

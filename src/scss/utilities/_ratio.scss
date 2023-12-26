@@ -1,0 +1,23 @@
+%ratio {
+  display: block;
+  position: relative;
+}
+
+.ratio {
+  &-16-7 {
+    @extend %ratio;
+    @include ratio(16, 7);
+  }
+  &-16-9 {
+    @extend %ratio;
+    @include ratio(16, 9);
+  }
+  &-4-3 {
+    @extend %ratio;
+    @include ratio(4, 3);
+  }
+  &-1-1 {
+    @extend %ratio;
+    @include ratio(1, 1);
+  }
+}

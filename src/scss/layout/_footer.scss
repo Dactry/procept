@@ -1,0 +1,45 @@
+.site-footer {
+  .custom-logo {
+    width: 15em;
+  }
+  a:not([class]) {
+    display: inline-block;
+  }
+  .menu {
+    @include reset-list;
+    li {
+      margin-top: calc(var(--spacer-element) / 1.25);
+    }
+    a {
+      @include target-space;
+    }
+    ul {
+      list-style: none;
+      padding-left: 1em;
+    }
+  }
+  &__form {
+    .button {
+      width: 100%;
+    }
+  }
+  &__bottom {
+    --spacer-5: #{clamp-smart(1rem, 3rem, 700px)};
+    display: flex;
+    flex-direction: column;
+    @include bp(md) {
+      align-items: center;
+      flex-direction: row;
+    }
+    gap: var(--spacer-5);
+  }
+}
+
+.sticky-footer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  .site-footer {
+    margin-top: auto;
+  }
+}

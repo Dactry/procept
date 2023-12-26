@@ -1,0 +1,69 @@
+$themeColor: var(--color-primary);
+@import "swiper/scss";
+@import "swiper/scss/effect-fade";
+@import "../abstracts/variables";
+@import "../abstracts/mixins/breakpoints";
+
+.swiper {
+  &-slide--center {
+    margin: 0 auto;
+  }
+  &-fade &-slide:not(.swiper-slide-active) {
+    opacity: 0 !important;
+  }
+  &.hero-slider &-slide {
+    height: initial;
+  }
+  &.members-slider &-slide {
+    transition: opacity var(--transition);
+    &:not(.swiper-slide-active) {
+      opacity: 0.3;
+    }
+  }
+  &--center &-wrapper {
+    align-items: center;
+  }
+  &-pagination {
+    text-align: center;
+    min-width: 4.5em;
+    user-select: none;
+    &--hero {
+      position: absolute;
+      left: 50%;
+      translate: -50%;
+      bottom: 0;
+      z-index: 1;
+      padding-top: var(--spacer-section);
+      padding-bottom: var(--spacer-section);
+      @include bp(md, max) {
+        text-align: center;
+      }
+    }
+    &-progressbar {
+      background: var(--color-white);
+      &-fill {
+        background: var(--color-primary);
+        height: var(--border-width);
+        display: block;
+        transform-origin: left;
+      }
+    }
+  }
+
+  &--disabled {
+    display: flex;
+    gap: var(--spacer-element);
+    > * {
+      flex: 1;
+    }
+  }
+
+  &-button-lock,
+  &-pagination-lock {
+    display: none;
+  }
+
+  &-button + &-button {
+    margin-left: var(--spacer-element-sm);
+  }
+}

@@ -1,0 +1,23 @@
+.member-card {
+    --image-size: #{clamp-smart(100px, 300px)};
+    padding: 0 var(--spacer-element-lg);
+    @include bp(sm) {
+        max-width: clamp-smart(400px, 760px);
+    }
+    &__content {
+        min-height: var(--image-size);
+        flex: 1;
+        padding: var(--spacer-element);
+        background: var(--color-white);
+        margin-right: calc(var(--image-size) * -1);
+        padding-right: calc(var(--image-size) + var(--spacer-element));
+    }
+    &__body {
+        display: flex;
+        align-items: flex-end;
+    }
+    &__img {
+        position: relative;
+        width: var(--image-size);
+    }
+}

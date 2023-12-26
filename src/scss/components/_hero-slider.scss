@@ -1,0 +1,28 @@
+.hero-slider {
+    &__img {
+        margin: 0 auto;
+        max-height: calc(100vh - var(--header-fullheight) - var(--block-radius));
+        object-fit: contain;
+    }
+
+    &__body {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-top: var(--header-fullheight);
+        padding-bottom: calc(var(--spacer-section));
+        > * {
+            flex: 1;
+        }
+    }
+    &.swiper-initialized &__body {
+        @include bp(md, max) {
+            padding-bottom: calc(var(--spacer-section) * 2 + var(--input-height));
+        }
+    }
+    &.swiper-initialized &__content {
+        @include bp(md) {
+            padding-bottom: var(--input-height);
+        }
+    }
+}

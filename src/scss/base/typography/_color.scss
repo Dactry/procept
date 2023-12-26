@@ -1,0 +1,29 @@
+.text {
+  &-primary {
+    color: var(--color-primary);
+  }
+  &-muted {
+    color: var(--color-text-muted);
+  }
+  &-light {
+    color: var(--color-light);
+  }
+  &-muted-alt {
+    color: var(--color-text-muted-alt);
+  }
+  &-white {
+    --color-border: var(--color-text-muted);
+    --color-text-muted: var(--color-white-muted);
+    --color-text-muted-alt: var(--color-white-muted-alt);
+    --input-border-color: var(--color-white-muted);
+    --input-border-color-hover: var(--color-white);
+    --input-border-color-focus: var(--color-white);
+    --color-invert: var(--color-dark);
+    --color-text: var(--color-white);
+
+    color: var(--color-white) !important;
+    a:not([class]):not(:hover) {
+      color: inherit;
+    }
+  }
+}

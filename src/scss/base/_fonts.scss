@@ -1,0 +1,19 @@
+$font-path: "../../fonts/";
+
+@font-face {
+  font-family: "Arial";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("#{$font-path}Arial.woff2") format("woff2"),
+    url("#{$font-path}Arial.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Arial";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url("#{$font-path}Arial-Bold.woff2") format("woff2"),
+    url("#{$font-path}Arial-Bold.woff") format("woff");
+}

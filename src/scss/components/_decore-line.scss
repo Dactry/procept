@@ -1,0 +1,51 @@
+.decor-line {
+  --transform-origin: top;
+  --border-color: currentColor;
+  --decor-line-height: 0.875em;
+  --decor-line-skew: 60deg;
+  --decor-line-border: 0 0 1px 2px;
+  --decor-line-width: 100%;
+  --align-content: start;
+  
+  text-align: var(--align-content);
+  position: relative;
+  &--left {
+    --decor-line-skew: -60deg;
+    --decor-line-border: 0 2px 1px 0;
+    &::after {
+      left: 100% !important;
+    }
+  }
+  &--right {
+    --align-content: end;
+    margin-left: auto !important;
+  }
+  &.decor-line--extra::after {
+    --decor-line-border: 1px 0 0 0;
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100vw;
+    right: 100%;
+    bottom: 1px;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    width: var(--decor-line-width);
+  }
+  &.decor-line--extra::after,
+  &::before {
+    border-width: var(--decor-line-border);
+    border-color: var(--border-color);
+    transform-origin: var(--transform-origin);
+    transform: skewX(var(--decor-line-skew));
+    height: var(--decor-line-height);
+    border-style: solid;
+    transition:
+      opacity var(--transition),
+      color var(--transition);
+  }
+}

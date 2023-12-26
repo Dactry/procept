@@ -1,0 +1,46 @@
+.site-timeline {
+  --timeline-spacer: #{clamp-smart(2rem, 3.8rem)};
+  @include reset-list;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 calc(var(--timeline-spacer) / 2);
+  &__item {
+    display: contents;
+    &:not(:last-child) .site-timeline {
+      &__content {
+        padding-bottom: var(--timeline-spacer);
+      }
+      &__date::before {
+        content: "";
+        position: absolute;
+        top: 0.5em;
+        right: 0.25em;
+        width: var(--border-width);
+        height: 100%;
+        background: currentColor;
+        z-index: -1;
+      }
+    }
+  }
+
+  &__content {
+    @include vstack;
+    gap: 0.5em;
+  }
+  &__date {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    gap: calc(var(--timeline-spacer) / 2);
+    &::after {
+      content: "";
+      background: var(--color-primary);
+      border: var(--border-width) solid currentColor;
+      width: 0.6em;
+      height: 0.6em;
+      margin-top: 0.5em;
+      border-radius: 50%;
+    }
+  }
+}

@@ -1,0 +1,141 @@
+.target-menu {
+    overflow: hidden;
+    &-wrap {
+        position: fixed;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 100;
+        &::before {
+            content: "EASY NAVIGATION";
+            position: absolute;
+            right: 100%;
+            top: 50%;
+            translate: 0 -50%;
+            writing-mode: vertical-rl;
+            height: max-content;
+            scale: -1;
+            font-size: var(--fs-sm);
+            letter-spacing: 0.2em;
+            animation: hidetext var(--transition) 8s forwards;
+        }
+    }
+    li {
+        margin: 0;
+        padding-left: calc(var(--container-spacer) / 2);
+        padding-right: calc(var(--container-spacer) / 2);
+        position: relative;
+        font-weight: bold;
+    }
+    &__buttons {
+        background: rgba($color-dark, 0.8);
+        backdrop-filter: blur(10px) invert(0.3);
+        border-radius: var(--spacer-element-md) 0 0 var(--spacer-element-md);
+        padding: var(--spacer-element-md) 0;
+        margin: 0;
+        font-size: 1rem;
+        max-width: 310px;
+        white-space: nowrap;
+        list-style: none;
+
+        &.active:hover {
+            .target-menu__buttons {
+                &-link {
+                    grid-template-columns: 1fr;
+                }
+                &-title {
+                    padding-left: 1em;
+                    padding-right: var(--spacer-element-md);
+                    opacity: 1;
+                    translate: 0;
+                    transition:
+                        padding var(--transition),
+                        opacity var(--transition);
+                }
+            }
+        }
+        &-link {
+            --icon-color: var(--color-primary);
+            color: var(--color-white);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 0fr;
+            text-decoration: none;
+            margin-right: -0.2em;
+            transition:
+                grid-template-columns var(--transition),
+                padding var(--transition);
+            &.active {
+                &::before {
+                    background: var(--color-primary);
+                }
+                .target-menu__buttons-title {
+                    &::before {
+                        --border-color: var(--color-primary);
+                    }
+                }
+            }
+            @include bp(lg) {
+                &:hover {
+                    &::before {
+                        background: var(--color-primary);
+                    }
+                    .target-menu__buttons-title {
+                        &::before {
+                            --border-color: var(--color-primary);
+                        }
+                    }
+                }
+            }
+            &::before {
+                content: "";
+                position: absolute;
+                right: calc(var(--container-spacer) / 2);
+                width: 0.4em;
+                height: 0.4em;
+                top: 50%;
+                background: currentColor;
+                translate: 50% -50%;
+                border-radius: 50%;
+                transition: background var(--transition);
+            }
+            &::after {
+                content: "";
+                @include stretch;
+            }
+        }
+        &-title {
+            --icon-size: var(--spacer-element);
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+            text-overflow: ellipsis;
+            &::before {
+                --border-color: transparent;
+                --transform-origin: bottom;
+                transition: 0.3s;
+                left: 1em;
+            }
+        }
+    }
+}
+
+[data-spy-window-height] {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: -100;
+    left: 200%;
+    visibility: hidden;
+}
+
+@keyframes hidetext {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

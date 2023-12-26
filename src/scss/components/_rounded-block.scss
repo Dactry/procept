@@ -1,0 +1,16 @@
+.rounded-block {
+    position: sticky !important;
+    top: 0;
+    z-index: 1;
+    background: var(--color-white);
+    transition: top var(--transition);
+
+    &.spacer-section-py,
+    &.spacer-section-pb {
+        padding-bottom: calc(var(--spacer-section) + var(--block-radius));
+    }
+    &:not(:first-child) {
+        margin-top: calc(var(--block-radius) * -1);
+        border-radius: var(--block-radius) var(--block-radius) 0 0;
+    }
+}

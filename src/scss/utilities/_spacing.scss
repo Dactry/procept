@@ -1,0 +1,60 @@
+.m {
+  &-0 {
+    margin: 0;
+  }
+  &t-0 {
+    margin-top: 0;
+  }
+  &b-0 {
+    margin-bottom: 0;
+  }
+  &t-auto {
+    margin-top: auto;
+  }
+  &l-auto {
+    margin-left: auto;
+  }
+  &r-auto {
+    margin-right: auto;
+  }
+  &t-first-child-0 {
+    > :first-child {
+      margin-top: 0;
+    }
+  }
+}
+
+.spacer-section {
+  &-p {
+    &t,
+    &y {
+      padding-top: var(--spacer-section);
+    }
+    &b,
+    &y {
+      padding-bottom: var(--spacer-section);
+    }
+  }
+  &-m {
+    &t {
+      margin-top: var(--spacer-section);
+    }
+    &b {
+      margin-bottom: var(--spacer-section);
+    }
+  }
+}
+
+.gap {
+  @each $name, $value in $spacers {
+    &-#{$name} {
+      gap: var(--spacer-#{$name});
+    }
+    &-x-#{$name} {
+      column-gap: var(--spacer-#{$name});
+    }
+    &-y-#{$name} {
+      row-gap: var(--spacer-#{$name});
+    }
+  }
+}

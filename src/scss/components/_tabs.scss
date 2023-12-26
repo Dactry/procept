@@ -1,0 +1,62 @@
+$bp: md;
+
+.tabs {
+  &__tab {
+    --icon-rotate: rotate(0deg);
+    text-align: left;
+    background: none;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border: none;
+    align-items: baseline;
+    padding: 0;
+    color: inherit;
+    cursor: pointer;
+    gap: var(--spacer-element);
+    transition: color var(--transition);
+    &::after {
+      content: "";
+      @include stretch;
+    }
+    &.active {
+      --icon-rotate: rotate(45deg);
+    }
+    &.active,
+    &:hover {
+      color: var(--color-primary);
+    }
+    &-icon {
+      transform: var(--icon-rotate);
+      font-size: 0.5em;
+      transition: transform var(--transition);
+    }
+    // @include bp($bp, max) {
+    //   max-width: 85%;
+    //   flex: 0 0 auto;
+    // }
+  }
+  &__tablist {
+    margin: 0;
+    display: flex;
+    row-gap: var(--spacer-element-sm);
+    column-gap: var(--spacer-3);
+
+    @include bp($bp, max) {
+      padding: 0 var(--container-spacer);
+      margin: 0 calc(var(--container-spacer) * -1);
+      overflow-x: auto;
+      padding-bottom: var(--spacer-element);
+    }
+
+    @include bp($bp) {
+      flex-direction: column;
+    }
+  }
+  &__content {
+    overflow: hidden;
+    > :first-child {
+      margin-top: 0;
+    }
+  }
+}

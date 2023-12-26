@@ -1,0 +1,39 @@
+.button {
+  @include button;
+
+  &:hover {
+    @include button--hover;
+  }
+  &--outline {
+    @include button--outline;
+  }
+
+  &--white {
+    @include button--white;
+  }
+
+  &--square {
+    padding: 0;
+    min-width: var(--input-height);
+  }
+
+  &--backgroundless:not(:hover):not(:focus) {
+    --button-background-color: transparent;
+    --button-border-color: transparent;
+    color: inherit;
+  }
+  &--arrow {
+    &:hover::after {
+      rotate: 45deg;
+    }
+    &::after {
+      --icon-size: var(--fs-xs);
+      @include mask-icon(
+        url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.08268 1.58337H14.916M14.916 1.58337V14.4167M14.916 1.58337L2.08268 14.4167' stroke='white' stroke-width='2' stroke-linecap='square'/%3E%3C/svg%3E%0A")
+      );
+      margin-bottom: 2px;
+      transition: rotate var(--transition);
+      @include will-change(rotate);
+    }
+  }
+}

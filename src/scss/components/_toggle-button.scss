@@ -1,0 +1,23 @@
+.toggle-button {
+  min-height: var(--header-height);
+  line-height: 1;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 var(--container-spacer) 0 0;
+  margin-right: calc(var(--container-spacer) * -1);
+  display: flex;
+  align-items: center;
+  &,
+  &:hover,
+  &:focus {
+    color: inherit;
+    background: none;
+    border: none;
+  }
+  &__icon {
+    font-size: var(--fs-xxl);
+  }
+  &__label {
+    font-size: var(--fs-sm);
+  }
+}

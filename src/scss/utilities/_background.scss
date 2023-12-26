@@ -1,0 +1,32 @@
+.bg {
+  &-primary {
+    background: var(--color-primary);
+    //white GF button on primary background color
+    + div {
+      .gform_wrapper .button:not(:hover) {
+        @include button--white;
+      }
+    }
+  }
+  &-surface {
+    --icon-bg: var(--color-white);
+    background: var(--color-surface);
+  }
+  &-dark {
+    background: var(--color-dark);
+  }
+  &-white {
+    background: var(--color-white);
+  }
+}
+
+
+
+.background-item {
+  &-mobile ~ & {
+    display: none;
+    @include bp(md) {
+      display: block;
+    }
+  }
+}

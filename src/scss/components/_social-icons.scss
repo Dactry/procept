@@ -1,0 +1,39 @@
+.social-icons {
+  @include reset-list;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacer-element-sm);
+  margin: 0;
+  &__item {
+    margin: 0;
+    display: flex;
+    gap: 0.5em;
+    flex: 0;
+    align-items: center;
+    position: relative;
+    &.has_label {
+      margin-right: auto;
+    }
+  }
+  &__link {
+    &:hover + 
+    .social-icons__label {
+      opacity: 1;
+    }
+    &::after {
+      content: '';
+      @include stretch;
+      z-index: 1;
+    }
+  }
+  &__label {
+    opacity: .4;
+    color: currentColor;
+    font-size: var(--fs-xs);
+    line-height: 1.25;
+    min-width: 5em;
+    z-index: 0;
+    transition: opacity var(--transition);
+  }
+}

@@ -1,0 +1,43 @@
+//woocommerce and default pagination
+
+ul.page-numbers,
+.pagination {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: var(--spacer-2);
+  li {
+    margin: 0;
+  }
+
+  .page-numbers {
+    --size: 3.2em;
+    --icon-size: 0.8em;
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9rem;
+    border: var(--border-width) solid currentColor;
+    text-decoration: none;
+    color: var(--color-text);
+    transition:
+      border-color var(--transition),
+      background-color var(--transition),
+      color var(--transition);
+    &.dots {
+      pointer-events: none;
+    }
+    &.current,
+    &:hover {
+      color: var(--color-invert);
+      background-color: var(--color-text);
+      border-color: var(--color-text);
+    }
+  }
+}

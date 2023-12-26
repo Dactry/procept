@@ -1,0 +1,62 @@
+.accordion {
+  $self: &;
+  --accent-color: var(--color-primary);
+
+  .text-white & {
+    --accent-color: inherit;
+  }
+
+  &__header {
+    font-size: inherit;
+    margin: 0;
+  }
+
+  &__content {
+    overflow: hidden;
+    font-size: clamp-smart(0.875rem, 1.25rem);
+    line-height: var(--line-height);
+    position: relative;
+    > :last-child {
+      margin-bottom: 0.5em;
+    }
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transition: color var(--transition);
+    gap: var(--spacer-element);
+    padding: 0;
+    cursor: pointer;
+    align-items: baseline;
+    text-align: left;
+    color: var(--accent-color);
+    &::after {
+      content: "";
+      @include stretch;
+    }
+  }
+  
+  &__item:hover {
+    --accent-color: var(--color-primary);
+  }
+
+  &__icon {
+    transform: rotate(90deg);
+    font-size: 0.5em;
+    transition: transform var(--transition);
+  }
+
+  .active {
+    --accent-color: var(--color-primary);
+    #{$self}__button {
+      color: var(--accent-color);
+    }
+    #{$self}__icon {
+      transform: rotate(0);
+    }
+  }
+}

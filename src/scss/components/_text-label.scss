@@ -1,0 +1,10 @@
+.text-label {
+  text-transform: uppercase;
+  font-size: var(--fs-xs);
+  line-height: 1;
+  color: var(--color-primary);
+  .text-white & {
+    color: inherit;
+  }
+}
+  
