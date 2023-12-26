@@ -185,3 +185,19 @@ function admin_panel_css()
 {
 	echo '<style>#edittag{max-width: none;}[data-name="content_blocks"] > :first-child {display: none}</style>';
 }
+
+function remove_elementor_css()
+{
+	if (is_page_template('default') && get_post_type() == 'page') {
+		global $wp_styles;
+		foreach ($wp_styles->registered as $handle => $data) {
+			if (strpos($data->src, '/elementor/css/post-') !== false) {
+				wp_dequeue_style($handle);
+			}
+			if (strpos($data->src, 'swiper.min.css') !== false) {
+				wp_dequeue_style($handle);
+			}
+		}
+	}
+}
+add_action('wp_enqueue_scripts', 'remove_elementor_css', 9999);
