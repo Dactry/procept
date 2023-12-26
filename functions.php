@@ -185,3 +185,5 @@ function admin_panel_css()
 {
 	echo '<style>#edittag{max-width: none;}[data-name="content_blocks"] > :first-child {display: none}</style>';
 }
+
+//Test comment
